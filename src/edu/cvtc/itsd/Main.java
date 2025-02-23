@@ -35,32 +35,41 @@ public class Main {
   // Internal classes ///////////////////////////////////////////////////////////
   // InputFilter manages user input to the card number field.
   private static class InputFilter extends DocumentFilter {
-    private static final int MAX_LENGTH = 8;
+    private static final int MAX_LENGTH = 8; // Limit input to 8 digits
 
     @Override
     public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
-        throws BadLocationException
-    {
+            throws BadLocationException {
       if (fb.getDocument() != null) {
-        super.insertString(fb, offset, stringToAdd, attr);
-      }
-      else {
-        Toolkit.getDefaultToolkit().beep();
+        String currentText = fb.getDocument().getText(0, fb.getDocument().getLength());
+        String newText = currentText.substring(0, offset) + stringToAdd + currentText.substring(offset);
+
+        // Ensure the input is numeric and does not exceed MAX_LENGTH
+        if (newText.matches("\\d*") && newText.length() <= MAX_LENGTH) {
+          super.insertString(fb, offset, stringToAdd, attr);
+        } else {
+          Toolkit.getDefaultToolkit().beep(); // Beep to indicate invalid input
+        }
       }
     }
 
     @Override
     public void replace(FilterBypass fb, int offset, int lengthToDelete, String stringToAdd, AttributeSet attr)
-        throws BadLocationException
-    {
+            throws BadLocationException {
       if (fb.getDocument() != null) {
-        super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
-      }
-      else {
-        Toolkit.getDefaultToolkit().beep();
+        String currentText = fb.getDocument().getText(0, fb.getDocument().getLength());
+        String newText = currentText.substring(0, offset) + stringToAdd + currentText.substring(offset + lengthToDelete);
+
+        // Ensure the input is numeric and does not exceed MAX_LENGTH
+        if (newText.matches("\\d*") && newText.length() <= MAX_LENGTH) {
+          super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
+        } else {
+          Toolkit.getDefaultToolkit().beep(); // Beep to indicate invalid input
+        }
       }
     }
   }
+
 
   // Lookup the card information after button press ///////////////////////////
   public static class Update implements ActionListener {
