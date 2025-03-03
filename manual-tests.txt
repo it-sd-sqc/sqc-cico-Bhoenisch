@@ -61,4 +61,17 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * Should display "Developer" for the user name.
 
+# Module 5: Clean Shutdown Test
+
+## Test steps
+1. Build and run CiCo.
+2. Close the main window using the 'X' button.
+3. Check if the application process terminates completely.
+
+## Expected results:
+* The application exits fully and does not remain running in the background.
+* The shell should display "Clean shutdown."
+
+
+
 
