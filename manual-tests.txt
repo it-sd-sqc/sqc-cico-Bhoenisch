@@ -61,13 +61,14 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * Should display "Developer" for the user name.
 
-# Module 6: Automatically submit after card number is entered
+# Module 6: Update the color scheme to be more professional
 
 ## Test steps
 1. Build and run CiCo.
-2. Enter 00000000 into the field
+2. Enter 00000000 into the field and click Update.
+3. Enter 11111111 into the field and click Update.
 
 ## Expected results
-* The program should automatically submit the number and show the proper display *
+* The program should display the new color scheme for the main, status and error panels *
 
 
