@@ -72,6 +72,13 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 * The application exits fully and does not remain running in the background.
 * The shell should display "Clean shutdown."
 
+# Module 6: Update the color scheme to be more professional
 
+## Test steps
+1. Build and run CiCo.
+2. Enter 00000000 into the field and click Update.
+3. Enter 11111111 into the field and click Update.
 
+## Expected results
+* The program should display the new color scheme for the main, status and error panels *
 
